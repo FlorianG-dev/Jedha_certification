@@ -1,0 +1,8 @@
+/0_Build a quizz
+/__pycache__
+*.py[oc]
+__*
+virt
+.DS_Store
+.env
+7_Holi/Data

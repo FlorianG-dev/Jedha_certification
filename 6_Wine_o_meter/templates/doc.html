@@ -1,0 +1,75 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Wine-o-meter:doc</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+  
+<body>
+<div class="centered">
+    <h1>API Documentation</h1>
+    <h3>Welcome to the API documentation for our wine quality production</h3>
+  <p>
+    What is wine-o-meter AI? It's a new beautiful AI model wrap into an API to help you predict your wine's quality based on its chemical composition.
+  </p>
+  <div>
+
+    <h3>I. General URL</h3>
+    <p><b>https://wine-o-meter-vflo.herokuapp.com/predict</b></p>
+    <h3>II. Endpoint POST /predict</h3>
+    <div>
+        <p>
+            This endpoint allows you to make a prediction of wine's quality (note between 0 and 10).
+        </p>
+
+        <h4>
+            Shape of the input data
+        </h4>
+        <p>
+            You should request this endpoint using a POST method with a json.  Each item (key:value) will give a prediction for a wine.
+            <ol>
+                <li>The key must be an integer, it is the id of the prediction</li>
+                <li>The value must be a list of 11 numbers (floats)</li>
+            </ol>
+            <u>EXAMPLE : input for one prediction, with an id 666 </u>
+            <br>
+            <code>{666: [7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8]}</code>
+        </p>
+
+        <h4>
+            Request this endpoint with python 
+        </h4>
+      <p>
+        <u>EXAMPLE: </u>
+        <br>
+        <code>
+            >>> res = requests.post(https://wine-o-meter-vflo.herokuapp.com/predict, json={666: [7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8]})
+            <br>>>>  assert res.status_code == 200
+            <br>>>> print(res.json())
+        </code>
+      </p>
+      <p>
+        If successful, it returns a JSON like:<br>
+          <code>
+           'msg': 'After checking, the input has the needed information', 'predict': ['6']
+          </code>
+      </p>
+      <h3>
+        III. Errors
+      </h3>
+      <p>
+        Our API will return an error 400 and a JSON<br>
+          <code>
+            "msg": "Apparently the prediction with id {id} has not 11 features, please provide 11 features"<br>
+            "msg": "Apparently in the prediction with id {id} there is a not digit feature, please provide only digit"
+          </code>
+        </pre>
+      </p>
+    </div>
+  </div>
+</div>
+</body>
