@@ -189,13 +189,26 @@
 <u>What is asked?</u>
 <p>
 
->XXX
+>This project is the final project as a Jedha Students. 
+>Idea has been submitted by Holi.io Founder : Clément Sirvente
+>The specifications from Holi.io can be found [here](https://github.com/FlorianG-dev/Jedha_certification/blob/master/7_Holi/Project_initialization.pdf). It is the projet number 1 : Topic modeling
 </p>
 <br>
 <u>French Topic related regarding the certification:</u>
 <br>
 
 >Bloc n°6 - Direction de projets de gestion de données
+
+<br>
+<u>Precisions for the readers:</u>
+<br>
+<ol>
+  <li>You can begin with the project specifications, we are the project number 1 <a href="https://github.com/FlorianG-dev/Jedha_certification/blob/master/7_Holi/Project_initialization.pdf">here</a></li>
+  <li>Then look at the video of <a href="https://www.youtube.com/watch?v=c4U8ha9odjo&t=1321s&ab_channel=JedhaBootcamp">our presentation</a> (if you understand French) , we are using <a href="https://github.com/FlorianG-dev/Jedha_certification/blob/master/7_Holi/Project_final_presentation.pdf">this powerpoint</a></li>
+  <li>After that you can visit our <a href="https://jedha-holi-text-analyzer.herokuapp.com/">WebApp</a>, be careful as it is hosting on Heroku free, only one person can visit at a time</li>
+  <li>Finally you can go deep in the code, beginning with the notebook <a href="https://github.com/FlorianG-dev/Jedha_certification/blob/master/7_Holi/Step1_import_data.ipynb">Step1</a> and then the <a href="https://github.com/FlorianG-dev/Jedha_certification/blob/master/7_Holi/Step2_LDA_model_training.ipynb">Step2</a>. You can end by looking at our App code.
+
+</ol>
 <br><br>
 
 
