@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="UTF-8">
+    <title> Jedha x Holi.io live application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <div class="row">
+
+      <div class="left input">
+          <h1>Left of the page! </h1>
+
+          <h2> Here, give your text and choose your parameters</h2>
+          <hr size="2" width="70%" color="#ffffff">
+          <p class="verysmall"><b>EXAMPLE OF TEXT: Wikipedia's Ketchup definition</b><br><small>Ketchup is a table condiment. The unmodified term ("ketchup") now typically refers to tomato ketchup, although original recipes used egg whites, mushrooms, oysters, grapes, mussels, or walnuts, among other ingredients.
+            Tomato ketchup is a sweet and tangy condiment made from tomatoes, sugar, and vinegar, with seasonings and spices. The spices and flavors vary, but commonly include onions, allspice, coriander, cloves, cumin, garlic, and mustard, and sometimes include celery, cinnamon, or ginger. The market leader in the United States (60% market share) and the United Kingdom (82%) is Heinz Tomato Ketchup.[5][6] Tomato ketchup is most often used as a condiment to dishes that are usually served hot and may be fried or greasy: french fries and other potatoes, hamburgers, hot dogs, chicken tenders, tater tots, hot sandwiches, meat pies, cooked eggs, and grilled or fried meat. Ketchup is sometimes used as the basis for, or as one ingredient in, other sauces and dressings, and the flavor may be replicated as an additive flavoring for snacks, such as potato chips.
+            </small></p>
+
+      
+          <!--  Input For the text and input our functions -->
+          <form action="{{ url_for('result_live')}}"method="post">
+
+            <div class="top" data-role="fieldcontain">
+              <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>Enter your text here</legend>
+                          <textarea name="input_text" placeholder="Your text" rows = "10" col="120" required="required"></textarea>
+              </fieldset>
+            </div>
+
+              <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                  <legend>How many <em>keywords</em> do you want in your keyphrases:</legend>
+                        <input type="radio" id=1l name="l_keywords"  required="required" value=1 checked="checked"/>
+                        <label class="form-check-label" for=1>1</label>
+                        
+                        <input type="radio" id=2l name="l_keywords"  required="required" value=2/>
+                        <label class="form-check-label" for=2>2</label>
+
+                        <input type="radio" id=3l name="l_keywords"  required="required" value=3/>
+                        <label class="form-check-label" for=3>3</label>
+                </fieldset>
+              </div>
+
+              <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                  <legend>How many <em>keyphrases</em> do you want:</legend>
+                        <input type="radio" id=1k name="n_keywords"  required="required" value=3 checked="checked"/>
+                        <label for=1>3</label>
+                        
+                        <input type="radio" id=2k name="n_keywords"  required="required" value=4/>
+                        <label for=2>4</label>
+
+                        <input type="radio" id=3k name="n_keywords"  required="required" value=5/>
+                        <label for=3>5</label>
+                </fieldset>
+              </div>
+
+              <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                  <legend>How many <em>topics</em> do you want:</legend>
+                        <input type="radio" id=3t name="n_topics"  required="required" value=3 checked="checked"/>
+                        <label for=1>3</label>
+                        
+                        <input type="radio" id=4t name="n_topics"  required="required" value=4/>
+                        <label for=2>4</label>
+
+                        <input type="radio" id=5t name="n_topics"  required="required" value=5/>
+                        <label for=3>5</label>
+                </fieldset>
+              </div>
+              <br>
+            <button type="submit" class="btn">Analyze</button>
+          </form>
+      </div>
+      
+      <div class="right">
+        <h1>Right of the page! </h1> 
+        <h2>Here, find your results</h2>
+        <hr size="2" width="70%" color="#ffffff">  
+        <br>
+        <span class="righttext">The keywords found in this text are:</span><br>
+        {% for word in keywords %}
+          <span class="result">{{ word }}</span>
+        {% endfor %}
+
+        <br><br><hr size="0.5" width="30%" color="#e00e6d">
+
+        <span class="righttext">The colorized topics found in this text are: </span><br>
+        {% for word in topics %}
+          <span class="result">{{ word }}</span>
+        {% endfor %}
+        <br><br><hr size="0.5" width="30%" color="#e00e6d">
+        <span class="righttext">The following text presents the important words found in your text.<br>If the word is linked to one of the topics found, it is colorized according to its related topic </span><br><br>
+        <div class="colortext">{{colored_text}}</div>
+      </div>
+      
+      
+  </div>
+</body>
+</html>

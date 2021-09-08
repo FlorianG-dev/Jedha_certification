@@ -1,0 +1,94 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Jedha x Holi.io API documentation page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+  
+<body class = "apipage">
+
+  <div class="apitext">
+
+      <h1>API Documentation</h1>
+      <h2>Welcome to the API documentation for the Jedha x Holi.io live text analizer</h3>
+      <hr size="2" width="70%" color="#e00e6d">
+      <br>
+    <p>
+      What is Jedha x Holi.io text analizer? It's a new beautiful AI model wraped into an API and a live application to help you analize your texts.
+      You will have two outputs:
+      <ul>
+        <li><b>Keyphrases.</b> Those keyphrases can contain between 1 and 3 words and you can extract between 4 to 6 of them. We use the model <i>bert-base-nli-mean-tokens</i> from <a href="https://huggingface.co/sentence-transformers/bert-base-nli-mean-tokens"> Hugging Face</a></li>
+        <li><b>Topics.</b> Those topics come from a Machine Learning model called LDA. We have trained it on over 100 000+ press articles from the Microsoft dataset MIND</li>
+
+      </ul>
+    </p>
+    <div>
+
+      <br><h3><font color="#e00e6d">I.</font> General URL</h3>
+      <hr size="2" width="50%" color="#e00e6d" align="left">
+      https://jedha-holi-text-analyzer.herokuapp.com/api<br><br>
+      <h3><font color="#e00e6d">II.</font> Endpoint POST /api</h3>
+      <hr size="2" width="50%" color="#e00e6d" align="left">
+
+          This endpoint allows you to extract keyphrases and find the topics from a text.
+          
+          <h4>
+              Shape of the input data:
+          </h4>
+          <p>
+              You should request this endpoint using a POST method with a json. The json must be provided with 4 items (key : value) <br>
+              The keys must be strings and the keys' names must be exactly the ones provided in this documentation: 
+              <ul>
+                  <li>"text" : The text you want to analyze </li>
+                  <li>"l_keywords" : The number of words you want in each keyphrase extracted. It must be an integer between 1 and 3 </li>
+                  <li>"n_keywords" : The number of keyphrases you want to extract. It must be an integer between 4 and 6 </li>
+                  <li>"n_topics" : The number of topics you want to extract. It must be an integer between 4 and 6 </li>
+              </ul>
+              <u>EXAMPLE OF JSON</u>: request an analize for one of the first phrases of the <a href="https://en.wikipedia.org/wiki/Economy">Wikipedia's definition of Economy </a>, with 3 keyphrases of length 1 and then 3 topics.
+              <br><br>
+              <div class="code">{<br>
+                    "text : "In general, it is defined 'as a social domain that emphasize the practices, discourses, and material expressions associated with the production, use, and management of resources'. A given economy is the result of a set of processes that involves its culture, values, education, technological evolution, history, social organization, political structure and legal systems, as well as its geography, natural resource endowment, and ecology, as main factors",
+                    <br>"l_keywords" : 1,
+                    <br>"n_keywords" : 3,
+                    <br>"n_topics" : 3
+                    <br>}
+              </div>
+          </p>
+
+          <h4>
+              Request this endpoint with python 
+          </h4>
+        <p>
+          <u>EXAMPLE</u>:
+          <br>
+          <div class="code">
+              >>> myjson ={
+              <br>>>>&nbsp;&nbsp;&nbsp;"text : "Amnesty International (also referred to as Amnesty or AI) is an international non-governmental organization",
+              <br>>>>&nbsp;&nbsp;&nbsp;"l_keywords" : 1,
+              <br>>>>&nbsp;&nbsp;&nbsp;"n_keywords" : 3,
+              <br>>>>&nbsp;&nbsp;&nbsp;"n_topics" : 3 }
+              <br>>>> res = requests.post(https://jedha-holi-text-analyzer.herokuapp.com/api, myjson)
+              <br>>>> assert res.status_code == 200
+              <br>>>> print(res.json())
+              </div>
+        </p>
+        <p>
+          If successful, it returns a JSON like:<br>
+            <div class="code">
+              {'keywords': ['Domain', 'Economy', 'Ecology'], 'topics': ['Finance', 'US_politics', 'Military']}
+            </div>
+            <br><br>
+        <h3><font color="#e00e6d">III.</font> Errors</h3>
+        <hr size="2" width="50%" color="#e00e6d" align="left">
+        
+          Our API will return an error code 200 and a JSON<br>
+            <div class="code">
+              {'keywords': ['No keyword found'], 'topics': ['No topic found']}
+            </div>
+            <br>-
+          </pre>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>

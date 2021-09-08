@@ -1,0 +1,15 @@
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.9.0+cpu 
+torchvision==0.10.0+cpu
+Flask==1.1.1
+gunicorn
+numpy
+joblib
+pandas
+scikit-learn
+nltk
+spacy
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0-py3-none-any.whl
+sentence-transformers
+click<8
+gensim
