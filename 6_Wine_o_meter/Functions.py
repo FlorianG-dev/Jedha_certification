@@ -15,7 +15,7 @@ def POST_error(req): #req is a list of lists
     return (False, 'After checking, the input has the needed information')
     
 # -----------------------------------------------------------------------------
-#  #function to trandform the initial input list in json
+#  Function to trandform the initial input list in json
 # -----------------------------------------------------------------------------
 
 def input_transform (mylist):

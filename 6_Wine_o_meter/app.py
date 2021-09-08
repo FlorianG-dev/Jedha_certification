@@ -35,18 +35,18 @@ classifier = joblib.load("quality_classifier.joblib")
 #  We code the calls for each page of our app
 # -----------------------------------------------------------------------------
 
-#The documentation
+# The documentation
 @app.route('/doc')
 def doc():
     return render_template ('doc.html')
 
-#Our home page which will predict in live
+# Our home page which will predict in live
 @app.route("/")
 def home():
     return render_template('index.html')
 
 
-#Our page which will do the prediction live
+# Our page which will do the prediction live
 @app.route('/predict_live',methods=['POST'])
 def predict_live():
     #For rendering results on HTML GUI
@@ -58,7 +58,7 @@ def predict_live():
 
 
 
-#Our page which will predict through an API
+# Our page which will predict through an API
 @app.route("/predict", methods=["POST"])
 def index():
     # Get the data
@@ -77,7 +77,7 @@ def index():
     return jsonify({"msg": POST_error(req)[1]}), 400 #We give an error message and the code 400 if our function POST_error is True
 
 # -----------------------------------------------------------------------------
-#If we call doirectly the script it will launch the app
+#  If we call doirectly the script it will launch the app
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
