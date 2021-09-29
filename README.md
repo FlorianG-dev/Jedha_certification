@@ -14,7 +14,7 @@
 
   <p align="center">
     Class : dsmft-paris-13<br />
-    Final exam's date : September,30th 2021
+    Final exam's date : September, 30th 2021
     <br />
     <a href="https://github.com/FlorianG-dev/Jedha_certification"><strong>Explore the 7 projects »</strong></a>
     <br />
